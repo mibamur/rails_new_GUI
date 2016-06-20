@@ -16,7 +16,6 @@ DB=`zenity --list --radiolist \
        FALSE mysql FALSE oracle FALSE postgresql TRUE sqlite3 FALSE frontbase FALSE ibm_db FALSE sqlserver FALSE jdbcmysql FALSE jdbcsqlite3 FALSE jdbcpostgresql FALSE jdbc`
 
 if [[ $DB=='postgresql' ]]; then
-  #statements
   touch new.sql
   DB_NAME1=$APP:l"_dev"
   DB_NAME2=$APP:l"_test"
@@ -70,6 +69,7 @@ S+=`zenity --list --checklist --multiple \
 
    if zenity --question --text="run it now: $S"; then
      eval $S
+     echo "Done: $S" >> POST_INSTALL.readme
    else
-     echo "U should run: $S" >> POST_INSTALL.readme
+     echo "Just run: $S" >> POST_INSTALL.readme
    fi
